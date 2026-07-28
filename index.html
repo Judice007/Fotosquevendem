@@ -212,6 +212,34 @@
   }
   .price-value{font-size:40px;font-weight:800;color:var(--accent);margin:10px 0;}
   .price-value small{font-size:16px;color:var(--text-dim);font-weight:400;}
+  .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media (max-width:720px){.price-grid{grid-template-columns:1fr;}}
+  .price-card{position:relative;}
+  .price-card.featured{border-color:var(--accent);}
+  .badge{
+    position:absolute;
+    top:-13px;
+    left:50%;
+    transform:translateX(-50%);
+    background:var(--accent);
+    color:#1a0e08;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    padding:4px 14px;
+    border-radius:999px;
+  }
+  .guarantee{
+    margin-top:24px;
+    text-align:center;
+    color:var(--text-dim);
+    font-size:14px;
+    max-width:520px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .guarantee b{color:var(--green);}
   .wa-cta{
     display:inline-block;
     background:#25d366;
@@ -413,13 +441,24 @@
 
 <section id="preco">
   <div class="wrap">
-    <div class="price-card">
-      <div class="eyebrow">Pacote de 10 fotos</div>
-      <div class="price-value">R$ 130 <small>a</small> R$ 180</div>
-      <p class="lead" style="margin:0 auto 6px;">Entrega em até 30 minutos de trabalho. Sem contrato, sem mensalidade.</p>
-      <a class="wa-cta" id="finalCta" href="#" target="_blank" rel="noopener">Falar no WhatsApp →</a>
-      <div class="config-note">Resposta rápida, direto no WhatsApp.</div>
+    <h2>Escolha seu pacote</h2>
+    <p class="lead">Preço fechado. Sem contrato, sem mensalidade, sem surpresa.</p>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="eyebrow">Pacote Inicial</div>
+        <div class="price-value">R$ 150</div>
+        <p class="lead" style="margin:0 auto 6px;">10 fotos editadas</p>
+        <a class="wa-cta" id="finalCta10" href="#" target="_blank" rel="noopener">Quero esse pacote →</a>
+      </div>
+      <div class="price-card featured">
+        <div class="badge">Mais popular</div>
+        <div class="eyebrow">Pacote Completo</div>
+        <div class="price-value">R$ 260</div>
+        <p class="lead" style="margin:0 auto 6px;">20 fotos editadas</p>
+        <a class="wa-cta" id="finalCta20" href="#" target="_blank" rel="noopener">Quero esse pacote →</a>
+      </div>
     </div>
+    <div class="guarantee"><b>Garantia de satisfação:</b> se não gostar do resultado, revisamos suas fotos de graça até você aprovar. Sem reembolso complicado, sem risco pra você.</div>
   </div>
 </section>
 
@@ -434,8 +473,8 @@ const NICHES = {
   comida: {
     hero: {
       eyebrow: "MVP · comida &amp; delivery",
-      title: "A foto não muda o prato.<br>Ela muda <span>se alguém pede</span>.",
-      sub: "Pegue a foto real do prato — tirada de celular mesmo — e entregue uma versão com luz, fundo e enquadramento de cardápio profissional. Sem inventar ingrediente nem porção. Só editar o que já existe."
+      title: "Seu cardápio não está vendendo?<br>O problema pode ser <span>a foto</span>.",
+      sub: "Foto de celular, sem luz, sem enquadramento — isso custa pedido todo dia. Pegamos a foto real do seu prato e devolvemos com cara de cardápio profissional. Sem inventar ingrediente, sem inventar porção."
     },
     subtypes: ["Marmita","Lanche/Hambúrguer","Prato executivo","Sobremesa","Bebida","Pizza"],
     backgrounds: ["Mesa de madeira clara, estilo bistrô","Fundo branco liso (catálogo)","Balcão de mármore escuro","Ambiente aconchegante desfocado ao fundo"],
@@ -455,8 +494,8 @@ const NICHES = {
   moda: {
     hero: {
       eyebrow: "MVP · moda &amp; tênis",
-      title: "A foto não muda o produto.<br>Ela muda <span>se alguém compra</span>.",
-      sub: "Pegue a foto real do tênis ou da peça — tirada de celular em cima da cama — e entregue uma versão com fundo e luz de catálogo de e-commerce. Sem inventar arranhão, desgaste ou modelo diferente. Só editar o que já existe."
+      title: "Seu produto não está vendendo?<br>O problema pode ser <span>a foto</span>.",
+      sub: "Foto de celular em cima da cama não vende tênis nem roupa. Pegamos a foto real do seu produto e devolvemos com cara de catálogo de e-commerce. Sem inventar arranhão, sem trocar o modelo."
     },
     subtypes: ["Tênis","Camiseta/Camisa","Calça/Jeans","Vestido","Bolsa/Acessório"],
     backgrounds: ["Fundo branco liso (catálogo e-commerce)","Fundo cinza degradê, estilo estúdio","Cenário urbano desfocado (lifestyle)","Fundo com textura de concreto"],
@@ -580,8 +619,10 @@ $("copyWaBtn").addEventListener("click", ()=>{
 });
 
 function updateFinalCta(){
-  const text = "Oi! Vi sua página e quero um pacote de fotos com IA pro meu negócio.";
-  $("finalCta").href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+  const text10 = "Oi! Vi sua página e quero o Pacote Inicial (10 fotos) pro meu negócio.";
+  const text20 = "Oi! Vi sua página e quero o Pacote Completo (20 fotos) pro meu negócio.";
+  $("finalCta10").href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text10)}`;
+  $("finalCta20").href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text20)}`;
 }
 
 updateHero();
