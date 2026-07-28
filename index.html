@@ -4,6 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fotos que Vendem — edição de fotos com IA para comida, moda e tênis</title>
+<meta name="description" content="Pegue a foto real do seu produto — comida, roupa ou tênis — e receba uma versão com luz, fundo e enquadramento de catálogo profissional. Sem inventar nada, só editar o que já existe.">
+<meta name="theme-color" content="#0f1115">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Fotos que Vendem">
+<meta property="og:title" content="Fotos que Vendem — edição de fotos com IA">
+<meta property="og:description" content="Pegue a foto real do seu produto — comida, roupa ou tênis — e receba uma versão com cara de catálogo profissional. Sem inventar nada.">
+<meta property="og:url" content="https://fotosquevendem.vercel.app/">
+<meta property="og:image" content="https://fotosquevendem.vercel.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fotos que Vendem — edição de fotos com IA">
+<meta name="twitter:description" content="Pegue a foto real do seu produto e receba uma versão com cara de catálogo profissional. Sem inventar nada.">
+<meta name="twitter:image" content="https://fotosquevendem.vercel.app/og-image.png">
 <style>
   :root{
     --bg:#0f1115;
@@ -224,15 +239,32 @@
     font-size:13px;
   }
   .copy-btn-sm.copied{border-color:var(--green);color:var(--green);}
+  .faq{max-width:720px;}
+  .faq details{
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:16px 20px;
+    margin-bottom:10px;
+    background:var(--card);
+  }
+  .faq summary{
+    cursor:pointer;
+    font-weight:600;
+    list-style:none;
+  }
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::before{content:"+ ";color:var(--accent);font-weight:800;}
+  .faq details[open] summary::before{content:"– ";}
+  .faq p{color:var(--text-dim);margin:10px 0 0;font-size:14px;}
 </style>
 </head>
 <body>
 
 <header class="hero">
   <div class="wrap">
-    <span class="eyebrow">MVP · edição de fotos com IA</span>
-    <h1>A foto não muda o produto.<br>Ela muda <span>se alguém compra</span>.</h1>
-    <p class="sub">Pegue a foto real do produto — comida, roupa, tênis — e entregue uma versão com luz, fundo e enquadramento de catálogo profissional. Sem inventar nada. Só editar o que já existe.</p>
+    <span class="eyebrow" id="heroEyebrow">MVP · edição de fotos com IA</span>
+    <h1 id="heroTitle">A foto não muda o produto.<br>Ela muda <span>se alguém compra</span>.</h1>
+    <p class="sub" id="heroSub">Pegue a foto real do produto — comida, roupa, tênis — e entregue uma versão com luz, fundo e enquadramento de catálogo profissional. Sem inventar nada. Só editar o que já existe.</p>
     <a class="cta" href="#gerador">Testar o gerador de prompt →</a>
   </div>
 </header>
@@ -351,6 +383,34 @@
   </div>
 </section>
 
+<section id="faq">
+  <div class="wrap">
+    <h2>Perguntas que você deve estar se fazendo</h2>
+    <div class="faq">
+      <details>
+        <summary>Preciso de equipamento, câmera ou computador bom?</summary>
+        <p>Não. Celular resolve pra fotografar, e a edição roda numa IA de imagem comum — não precisa de estúdio nem software pesado.</p>
+      </details>
+      <details>
+        <summary>As fotos não vão parecer "de IA", artificiais demais?</summary>
+        <p>Só se forem mal feitas. A regra aqui é a oposta de gerar comida ou produto do zero: o prato ou a peça continuam sendo exatamente os mesmos, só o ambiente (fundo, luz, ângulo) muda. É o que separa isso de uma foto genérica de banco de imagens.</p>
+      </details>
+      <details>
+        <summary>E se o dono da loja disser que não quer foto de IA no catálogo?</summary>
+        <p>É uma preocupação legítima — o cliente final desconfia de imagem que parece inventada. Por isso a venda não é "coloquei IA no seu produto", é "seu produto, com uma foto melhor". O argumento muda a conversa.</p>
+      </details>
+      <details>
+        <summary>Preciso pagar por ferramenta de IA pra começar?</summary>
+        <p>Não pra testar. Dá pra rodar o fluxo inteiro em ferramentas com camada gratuita — vale investir em uma paga depois que já estiver fechando pacotes com frequência.</p>
+      </details>
+      <details>
+        <summary>Quanto tempo leva pra entregar um pacote?</summary>
+        <p>Cerca de 30 minutos de trabalho para um pacote de 10 fotos, depois de receber as imagens originais do cliente.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <section id="preco">
   <div class="wrap">
     <div class="price-card">
@@ -372,6 +432,11 @@ const WHATSAPP_NUMBER = "552433662420";
 
 const NICHES = {
   comida: {
+    hero: {
+      eyebrow: "MVP · comida &amp; delivery",
+      title: "A foto não muda o prato.<br>Ela muda <span>se alguém pede</span>.",
+      sub: "Pegue a foto real do prato — tirada de celular mesmo — e entregue uma versão com luz, fundo e enquadramento de cardápio profissional. Sem inventar ingrediente nem porção. Só editar o que já existe."
+    },
     subtypes: ["Marmita","Lanche/Hambúrguer","Prato executivo","Sobremesa","Bebida","Pizza"],
     backgrounds: ["Mesa de madeira clara, estilo bistrô","Fundo branco liso (catálogo)","Balcão de mármore escuro","Ambiente aconchegante desfocado ao fundo"],
     lightings: ["Luz de estúdio suave e uniforme","Luz lateral quente, estilo restaurante","Luz natural difusa de janela"],
@@ -388,6 +453,11 @@ const NICHES = {
     protectFullEn: "Preserve 100% of the ingredients, portion size, texture and original shape of the dish. Do not add, remove or substitute any food element. Do not create steam, shine or juiciness that isn't in the original photo. Only change background, lighting and framing."
   },
   moda: {
+    hero: {
+      eyebrow: "MVP · moda &amp; tênis",
+      title: "A foto não muda o produto.<br>Ela muda <span>se alguém compra</span>.",
+      sub: "Pegue a foto real do tênis ou da peça — tirada de celular em cima da cama — e entregue uma versão com fundo e luz de catálogo de e-commerce. Sem inventar arranhão, desgaste ou modelo diferente. Só editar o que já existe."
+    },
     subtypes: ["Tênis","Camiseta/Camisa","Calça/Jeans","Vestido","Bolsa/Acessório"],
     backgrounds: ["Fundo branco liso (catálogo e-commerce)","Fundo cinza degradê, estilo estúdio","Cenário urbano desfocado (lifestyle)","Fundo com textura de concreto"],
     lightings: ["Luz de estúdio suave, sem sombra dura","Luz lateral dramática, estilo editorial","Luz natural difusa"],
@@ -408,6 +478,13 @@ const NICHES = {
 let state = { niche:"comida", lang:"pt", mode:"quick" };
 
 const $ = id => document.getElementById(id);
+
+function updateHero(){
+  const hero = NICHES[state.niche].hero;
+  $("heroEyebrow").innerHTML = hero.eyebrow;
+  $("heroTitle").innerHTML = hero.title;
+  $("heroSub").textContent = hero.sub;
+}
 
 function populateSelects(){
   const n = NICHES[state.niche];
@@ -452,6 +529,7 @@ document.querySelectorAll(".niche-btn:not(.soon)").forEach(btn=>{
     document.querySelectorAll(".niche-btn:not(.soon)").forEach(b=>b.classList.remove("active"));
     btn.classList.add("active");
     state.niche = btn.dataset.niche;
+    updateHero();
     populateSelects();
     buildPrompt();
   });
@@ -506,6 +584,7 @@ function updateFinalCta(){
   $("finalCta").href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 }
 
+updateHero();
 populateSelects();
 buildPrompt();
 updateFinalCta();
